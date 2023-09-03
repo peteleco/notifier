@@ -1,12 +1,12 @@
 <?php
 
-namespace VendorName\Skeleton\Commands;
+namespace Peteleco\Notifier\Commands;
 
 use Illuminate\Console\Command;
 
-class SkeletonCommand extends Command
+class NotifierCommand extends Command
 {
-    public $signature = 'skeleton';
+    public $signature = 'notifier';
 
     public $description = 'My command';
 
