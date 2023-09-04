@@ -27,4 +27,14 @@ class MessageCard extends Data
         public readonly DataCollection|null $sections = null,
     ) {
     }
+
+    public static function prepareForPipeline(Collection $properties): Collection
+    {
+        // Transform default null value as empty array
+        if ($properties->only('section')->isEmpty()) {
+            $properties->put('sections',  new DataCollection(Section::class, null));
+        }
+
+        return $properties;
+    }
 }
