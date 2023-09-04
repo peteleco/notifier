@@ -25,7 +25,7 @@ class MessageCard extends Data
     public static function prepareForPipeline(Collection $properties): Collection
     {
         // Transform default null value as empty array
-        if ($properties->only('sections')->isEmpty()) {
+        if ($properties->only('sections')->isEmpty() || !$properties->get('sections')) {
             $properties->put('sections', new DataCollection(Section::class, null));
         }
 
