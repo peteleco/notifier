@@ -2,19 +2,19 @@
 
 use Peteleco\Notifier\OrderUpdatedMessage;
 
-it('match order updated structure', function (){
+it('match order updated structure', function () {
 
-        $message = OrderUpdatedMessage::from([
-            'uuid' => $uuid = \Illuminate\Support\Str::uuid(),
-            'status' => $myCustomStatus = 'my custom status',
-            'updated_at' => $updatedAt = \Carbon\Carbon::yesterday()->setHour(18)->setMinutes(30)->setSecond(0),
-        ]);
-        expect($message->toJson())->toBe(
-            "{\"uuid\":\"$uuid\",\"status\":\"$myCustomStatus\",\"updated_at\":\"{$updatedAt->toAtomString()}\"}"
-        );
+    $message = OrderUpdatedMessage::from([
+        'uuid' => $uuid = \Illuminate\Support\Str::uuid(),
+        'status' => $myCustomStatus = 'my custom status',
+        'updated_at' => $updatedAt = \Carbon\Carbon::yesterday()->setHour(18)->setMinutes(30)->setSecond(0),
+    ]);
+    expect($message->toJson())->toBe(
+        "{\"uuid\":\"$uuid\",\"status\":\"$myCustomStatus\",\"updated_at\":\"{$updatedAt->toAtomString()}\"}"
+    );
 });
 
-it('match order updated message card structure', function (){
+it('match order updated message card structure', function () {
 
     $message = OrderUpdatedMessage::from([
         'uuid' => $uuid = \Illuminate\Support\Str::uuid(),
