@@ -5,6 +5,7 @@ namespace Peteleco\Notifier\Tests;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Orchestra\Testbench\TestCase as Orchestra;
 use Peteleco\Notifier\NotifierServiceProvider;
+use Spatie\LaravelData\LaravelDataServiceProvider;
 
 class TestCase extends Orchestra
 {
@@ -21,10 +22,11 @@ class TestCase extends Orchestra
     {
         return [
             NotifierServiceProvider::class,
+            LaravelDataServiceProvider::class,
         ];
     }
 
-    public function getEnvironmentSetUp($app)
+    public function getEnvironmentSetUp($app): void
     {
         config()->set('database.default', 'testing');
 
