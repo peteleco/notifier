@@ -13,9 +13,8 @@ class Section extends Data
         public readonly string $activitySubtitle,
         #[DataCollectionOf(Fact::class)]
         public readonly DataCollection $facts,
-        public readonly string $activityImage= 'https://adaptivecards.io/content/cats/3.png',
+        public readonly string $activityImage = 'https://adaptivecards.io/content/cats/3.png',
         public readonly bool $markdown = false
-    )
-    {
+    ) {
     }
 }

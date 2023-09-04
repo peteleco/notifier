@@ -14,8 +14,7 @@ class OrderUpdatedMessage extends Data
         public readonly string $uuid,
         public readonly string $status,
         public readonly DateTimeInterface $updated_at
-    )
-    {
+    ) {
     }
 
     public function toMessageCard(): MessageCard

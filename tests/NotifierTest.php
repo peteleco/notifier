@@ -47,11 +47,13 @@ it('send an order updated message', function () {
     $message = OrderUpdatedMessage::from([
         'uuid' => \Illuminate\Support\Str::uuid(),
         'status' => 'my custom status',
-        'updated_at' => \Carbon\Carbon::yesterday()->setHour(18)->setMinutes(30)->setSecond(0)
+        'updated_at' => \Carbon\Carbon::yesterday()->setHour(18)->setMinutes(30)->setSecond(0),
     ]);
     $request = app(
         Notifier::class,
         ['webhookUrl' => config('notifier.hooks.orders.updated')]
     )->send($message->toMessageCard());
+
     expect($request->status())->toBe(Response::HTTP_OK);
+
 });

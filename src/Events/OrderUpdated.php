@@ -10,6 +10,7 @@ use Peteleco\Notifier\OrderUpdatedMessage;
 class OrderUpdated
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
+
     public function __construct(public readonly OrderUpdatedMessage $message)
     {
     }

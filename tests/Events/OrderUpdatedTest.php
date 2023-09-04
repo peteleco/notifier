@@ -11,7 +11,7 @@ it('order updated', function () {
     OrderUpdated::dispatch($orderMessage = OrderUpdatedMessage::from([
         'uuid' => \Illuminate\Support\Str::uuid(),
         'status' => 'my order status',
-        'updated_at' => \Carbon\Carbon::now()
+        'updated_at' => \Carbon\Carbon::now(),
     ]));
 
     Event::assertDispatched(function (OrderUpdated $event) use ($orderMessage) {
