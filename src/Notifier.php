@@ -19,7 +19,7 @@ class Notifier
 
     public function sendMessage(string $message): \GuzzleHttp\Promise\PromiseInterface|\Illuminate\Http\Client\Response
     {
-        return $this->send(MessageCard::from(['summary' => $message]));
+        return $this->send(MessageCard::from(['summary' => $message, 'sections' => null]));
     }
 
     public function send(DataObject $messageCard): \GuzzleHttp\Promise\PromiseInterface|\Illuminate\Http\Client\Response
