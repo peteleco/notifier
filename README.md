@@ -40,20 +40,20 @@ This is the contents of the published config file:
 
 ```php
 return [
+  'hooks'=> [
+      'orders' => [
+          'updated' => env('NOTIFIER_HOOKS_ORDERS_UPDATED', 'https://webhook.site/bb7586cd-24cb-4336-b648-ceb4fd9c6609'),
+          'queue' => env('NOTIFIER_HOOKS_ORDERS_queue', 'default'),
+      ]
+  ]
 ];
-```
-
-Optionally, you can publish the views using
-
-```bash
-php artisan vendor:publish --tag="notifier-views"
 ```
 
 ## Usage
 
 ```php
 $notifier = new Peteleco\Notifier();
-echo $notifier->echoPhrase('Hello, Peteleco!');
+echo $notifier->sendMessage('Hello, Peteleco!');
 ```
 
 ## Testing
