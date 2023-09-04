@@ -4,7 +4,6 @@ namespace Peteleco\Notifier;
 
 use Illuminate\Support\Facades\Http;
 use Peteleco\Notifier\Channels\Teams\MessageCard;
-use Spatie\LaravelData\Contracts\DataObject;
 
 class Notifier
 {
@@ -22,7 +21,7 @@ class Notifier
         return $this->send(MessageCard::from(['summary' => $message, 'sections' => null]));
     }
 
-    public function send(DataObject $messageCard): \GuzzleHttp\Promise\PromiseInterface|\Illuminate\Http\Client\Response
+    public function send(MessageCard $messageCard): \GuzzleHttp\Promise\PromiseInterface|\Illuminate\Http\Client\Response
     {
         return Http::asJson()->post(
             $this->webhookUrl,
