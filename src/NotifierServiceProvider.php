@@ -21,5 +21,6 @@ class NotifierServiceProvider extends PackageServiceProvider
             ->hasViews()
             ->hasMigration('create_notifier_table')
             ->hasCommand(NotifierCommand::class);
+        $this->app->register(EventServiceProvider::class);
     }
 }
