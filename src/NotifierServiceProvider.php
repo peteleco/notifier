@@ -2,9 +2,9 @@
 
 namespace Peteleco\Notifier;
 
+use Peteleco\Notifier\Commands\NotifierCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Peteleco\Notifier\Commands\NotifierCommand;
 
 class NotifierServiceProvider extends PackageServiceProvider
 {
@@ -18,9 +18,12 @@ class NotifierServiceProvider extends PackageServiceProvider
         $package
             ->name('notifier')
             ->hasConfigFile()
-            ->hasViews()
-            ->hasMigration('create_notifier_table')
-            ->hasCommand(NotifierCommand::class);
+            ->hasViews();
+        // ->hasMigration('create_notifier_table')
+        // ->hasCommand(NotifierCommand::class)
+        $this->app->bind(Notifier::class, function (\Illuminate\Contracts\Foundation\Application $app) {
+            return new Notifier(config('notifier.hooks.orders.updated'));
+        });
         $this->app->register(EventServiceProvider::class);
     }
 }
