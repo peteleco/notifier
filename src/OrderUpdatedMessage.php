@@ -36,7 +36,7 @@ class OrderUpdatedMessage extends Data
                         ]),
                         Fact::from([
                             'name' => 'Updated at',
-                            'value' => $this->updated_at,
+                            'value' => $this->updated_at->format(DateTimeInterface::RFC2822),
                         ]),
                     ],
                 ]),
