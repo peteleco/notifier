@@ -108,10 +108,19 @@ chmod 755 ./docker/interact.sh
 ````shell
 ./interact
 
-# running tests inside the container
-pest
+# running commands inside the container
+composer test
 ````
-## 
+### xDebug
+If you want to debug, change the config mode in the docker/xdebug.ini to develop,debug
+````
+;xdebug.mode=coverage
+xdebug.mode=develop,debug
+````
+Then configure your cli to use your docker machine
+
+![Setup Docker 01](./docker/setup_docker_01.png)
+![Setup Docker 02](./docker/setup_docker_01.png)
 
 ## Changelog
 
