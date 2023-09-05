@@ -6,7 +6,8 @@
 [![Total Downloads](https://img.shields.io/packagist/dt/peteleco/notifier.svg?style=flat-square)](https://packagist.org/packages/peteleco/notifier)
 
 This module send notification to  Microsoft Teams using a webhook. 
-
+You can see the request hitting the webhook through the tests. You can clone this repo and change
+the ```config('notifier.hooks.orders.updated')``` to test with your hook without running docker.
 ## Installation
 
 You can install the package via composer:
@@ -85,6 +86,32 @@ $message = OrderUpdatedMessage::from([
 ```bash
 composer test
 ```
+
+## With docker
+### Quick setup
+````
+# run the command below to init docker
+./docker/init.sh -g ${GID} -u ${UID}
+
+# if have problem with permissions 
+chmod 755 ./docker/init.sh
+chmod 755 ./docker/pest.sh
+chmod 755 ./docker/interact.sh
+./docker/init.sh -g ${GID} -u ${UID}
+````
+
+### Testing
+````
+./pest
+````
+### Interacting with the container
+````shell
+./interact
+
+# running tests inside the container
+pest
+````
+## 
 
 ## Changelog
 
