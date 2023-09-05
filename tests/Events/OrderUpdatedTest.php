@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Event;
 use Peteleco\Notifier\Events\OrderUpdated;
 use Peteleco\Notifier\OrderUpdatedMessage;
@@ -7,7 +8,6 @@ use Peteleco\Notifier\OrderUpdatedMessage;
 it('order updated', function () {
     Event::fake();
 
-    // Perform order shipping...
     OrderUpdated::dispatch($orderMessage = OrderUpdatedMessage::from([
         'uuid' => \Illuminate\Support\Str::uuid(),
         'status' => 'my order status',

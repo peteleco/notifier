@@ -54,6 +54,32 @@ $message = OrderUpdatedMessage::from([
 # https://learn.microsoft.com/en-us/microsoftteams/platform/webhooks-and-connectors/how-to/connectors-using?tabs=cURL
 ```
 
+### Add this code to your model
+```php
+    protected static function boot(): void
+    {
+        parent::boot();
+        // Dispatch events
+        static::created(function (Order $order) {
+            OrderUpdated::dispatch(OrderUpdatedMessage::from([
+                'uuid' => $order->getAttribute('uuid'),
+                'status' => $order->load('orderStatus')->orderStatus->getAttribute('title'),
+                'updated_at' => $order->getAttribute('created_at'),
+            ]));
+        });
+
+        static::updated(function (Order $order) {
+            if($order->wasChanged('order_status_id')) {
+                OrderUpdated::dispatch(OrderUpdatedMessage::from([
+                    'uuid' => $order->getAttribute('uuid'),
+                    'status' =>  $order->load('orderStatus')->orderStatus->getAttribute('title'),
+                    'updated_at' => $order->getAttribute('created_at'),
+                ]));
+            }
+        });
+    }
+```
+
 ## Testing
 
 ```bash

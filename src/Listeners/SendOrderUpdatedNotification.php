@@ -18,6 +18,5 @@ class SendOrderUpdatedNotification implements ShouldQueue
     public function handle(OrderUpdated $event): void
     {
         $this->notifier->send($event->message->toMessageCard());
-
     }
 }
