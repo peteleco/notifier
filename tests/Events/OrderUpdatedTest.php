@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Event;
 use Peteleco\Notifier\Events\OrderUpdated;
 use Peteleco\Notifier\OrderUpdatedMessage;
